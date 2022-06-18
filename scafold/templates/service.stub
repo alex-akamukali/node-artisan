@@ -1,0 +1,42 @@
+<?php
+namespace {namespace};
+use {repoUse};
+//use Illuminate\Support\Facades\Auth;
+
+class {name}
+{
+    private ${repoVariable} = null;
+
+    function __construct({repoName} ${repoVariable}){
+        $this->{repoVariable} = ${repoVariable};
+    }
+
+
+    function fetch($filters=[]){
+        $query = $this->{repoVariable}->query();
+        return $query;
+    }
+
+    function fetchById($id){
+        $record = $this->{repoVariable}->fetchById($id);
+        return $record;
+    }
+
+
+    function update($id,$data){
+        $record = $this->{repoVariable}->update($id,$data);
+        return $record;
+    }
+
+    function create($data){
+        $record = $this->{repoVariable}->create($data);
+        return $record;
+    }
+
+    function remove($id){
+        $record = $this->{repoVariable}->remove($id);
+        return $record;
+    }
+
+
+}

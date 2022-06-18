@@ -1,0 +1,15 @@
+<?php 
+namespace App\Services;
+
+class {name}{
+
+   private $fields = [{fields}];
+
+   function foo($a,$b){
+
+   }
+
+
+
+}
+

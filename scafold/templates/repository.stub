@@ -1,0 +1,39 @@
+<?php
+namespace {namespace};
+use {modelUse};
+//use Illuminate\Support\Facades\Auth;
+
+class {name}
+{
+
+
+    function query(){
+        $query = {modelName}::query();
+        return $query;
+    }
+
+    function fetchById($id){
+        $record = {modelName}::query()->find($id);
+        return $record;
+    }
+
+
+    function update($id,$data){
+        $record = {modelName}::query()->find($id);
+        $record->update($data);
+        return $record;
+    }
+
+    function create($data){
+        $record = {modelName}::create($data);
+        return $record;
+    }
+
+    function remove($id){
+        $record = {modelName}::query()->find($id);
+        $record->delete();
+        return $record;
+    }
+
+
+}

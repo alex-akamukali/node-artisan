@@ -1,0 +1,51 @@
+<?php
+namespace {namespace};
+use {serviceUse};
+//use App\Http\Requests\Payment\CoursePaymentTrack\StoreRequest;
+//use App\Http\Requests\Payment\CoursePaymentTrack\UpdateRequest;
+use App\Http\Controllers\Controller;
+//use Illuminate\Http\Request;
+
+class {name} extends Controller
+{
+    //
+    private ${serviceVariable} = null;
+
+    function __construct({serviceName} ${serviceVariable}){
+        $this->{serviceVariable} = ${serviceVariable};
+    }
+
+    function index(){
+        $list = $this->{serviceVariable}->fetch(request()->all())->get();
+        return $list;
+    }
+
+    function create(){
+        
+    }
+
+    function edit($id){
+        $data = $this->{serviceVariable}->fetchById($id);
+    }
+
+    function show($id){
+        $data = $this->{serviceVariable}->fetchById($id);
+    }
+
+    function store(StoreRequest $request){
+      $new = $this->{serviceVariable}->create($request->validated());
+      return $new;
+    }
+
+    function update($id,UpdateRequest $updateRequest){
+        $record = $this->{serviceVariable}->update($id,$updateRequest->validated());
+        return $record;
+    }
+
+    function destroy($id=''){
+    //   $record = $this->coursePaymentTrackRepository->remove($id);
+      $removed = $this->{serviceVariable}->remove();
+      return $removed;
+    }
+
+}

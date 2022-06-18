@@ -1,0 +1,15 @@
+<?php 
+namespace App\Services;
+
+class UserService1{
+
+   private $fields = [{fields}];
+
+   function foo($a,$b){
+
+   }
+
+
+
+}
+
