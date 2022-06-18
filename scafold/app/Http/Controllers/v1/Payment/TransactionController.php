@@ -44,18 +44,30 @@ class TransactionController extends Controller
 
     function store(StoreRequest $request){
       $new = $this->transactionService->create($request->validated());
-      return $new;
+      
+      return redirect()->back()->with([
+            'message' => 'New Record Added Successfully',
+            'error'   => false,
+            'data'    => $new
+      ]);
     }
 
     function update($id,UpdateRequest $updateRequest){
         $record = $this->transactionService->update($id,$updateRequest->validated());
-        return $record;
+        return redirect()->back()->with([
+            'message' => 'Record updated successfully',
+            'error'   => false,
+            'data'    => $record
+        ]);
     }
 
-    function destroy($id=''){
-    //   $record = $this->coursePaymentTrackRepository->remove($id);
-      $removed = $this->transactionService->remove();
-      return $removed;
+    function destroy($id){
+      $removed = $this->transactionService->remove($id);
+        return redirect()->back()->with([
+            'message' => 'Record removed successfully',
+            'error'   => false,
+            'data'    => $data
+        ]);      
     }
 
 }
