@@ -17,7 +17,7 @@ const CodeGen = function(path,template){
     }
 
     function getPath(takeout="__none__"){
-      let t = pathArray.join("/");
+      let t =  pathArray.join("/");
       t = t.split(takeout);
       // console.log(t);
       return t[0];
@@ -34,8 +34,10 @@ const CodeGen = function(path,template){
       //return copy(pathArray).pop();
     }
 
+    
+
     function commit(data,ext='.php'){
-      scafold.generate(template,getPath() + ext,data);
+      scafold.generate(__dirname + '/' +  template,getPath() + ext,data);
     }
 
     function getSnakeCase(){
