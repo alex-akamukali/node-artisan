@@ -13,7 +13,10 @@ const GenerateScafold = function(){
         let file = pathSplit[pathSplit.length - 1];
         pathSplit.pop();
         fs.mkdirSync(pathSplit.join("/"),{recursive:true});
-        fs.writeFileSync(path,data,"utf-8");
+        if (!fs.existsSync(path)){
+            fs.writeFileSync(path,data,"utf-8");
+        }
+        
     };        
 
     const generate =(fromTemplate,toTarget,data)=>{
