@@ -1,8 +1,8 @@
 <?php
 namespace {namespace};
 use {serviceUse};
-//use App\Http\Requests\Payment\CoursePaymentTrack\StoreRequest;
-//use App\Http\Requests\Payment\CoursePaymentTrack\UpdateRequest;
+use {useStoreRequest};
+use {useUpdateRequest};
 use App\Http\Controllers\Controller;
 //use Illuminate\Http\Request;
 

@@ -1,8 +1,8 @@
 <?php
-namespace app\Controllers\Http\Payment;
+namespace app\Http\Controllers\v1\Payment;
 use App\Services\Payment\TransactionService;
-//use App\Http\Requests\Payment\CoursePaymentTrack\StoreRequest;
-//use App\Http\Requests\Payment\CoursePaymentTrack\UpdateRequest;
+use App\Http\Requests\Payment\Transaction\StoreRequest;
+use App\Http\Requests\Payment\Transaction\UpdateRequest;
 use App\Http\Controllers\Controller;
 //use Illuminate\Http\Request;
 

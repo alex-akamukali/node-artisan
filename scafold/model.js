@@ -17,7 +17,9 @@ const Model =function(path,template=""){
     function getNamespace(){
       let t = code.copy(code.getPathArray());
       t.pop();
-      return t.join("\\"); 
+      t =  t.join("\\").split('');
+      t[0] = t[0].toUpperCase(); 
+      return t.join("");
     }
 
     function getVariableName(){
@@ -27,13 +29,10 @@ const Model =function(path,template=""){
     }
 
     return Object.seal({
+        ...code,
         getUseStatment,
-        getName:code.getName,
         getVariableName,
-        getNamespace,
-        commit:code.commit,
-        getPath:code.getPath,
-        getName:code.getName
+        getNamespace
     });
 
 };
