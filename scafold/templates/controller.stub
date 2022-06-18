@@ -17,19 +17,29 @@ class {name} extends Controller
 
     function index(){
         $list = $this->{serviceVariable}->fetch(request()->all())->get();
-        return $list;
+        return inertia()->render("{svelteIndex}",[
+            "list"=>$list
+        ]);
     }
 
     function create(){
-        
+        return inertia()->render("{svelteCreate}",[
+           
+        ]);        
     }
 
     function edit($id){
         $data = $this->{serviceVariable}->fetchById($id);
+        return inertia()->render("{svelteEdit}",[
+            "data"=>$data
+        ]);
     }
 
     function show($id){
         $data = $this->{serviceVariable}->fetchById($id);
+        return inertia()->render("{svelteShow}",[
+            "data"=>$data
+        ]);
     }
 
     function store(StoreRequest $request){

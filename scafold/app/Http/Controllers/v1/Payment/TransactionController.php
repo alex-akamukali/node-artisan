@@ -1,5 +1,5 @@
 <?php
-namespace app\Http\Controllers\v1\Payment;
+namespace App\Http\Controllers\v1\Payment;
 use App\Services\Payment\TransactionService;
 use App\Http\Requests\Payment\Transaction\StoreRequest;
 use App\Http\Requests\Payment\Transaction\UpdateRequest;
@@ -17,19 +17,29 @@ class TransactionController extends Controller
 
     function index(){
         $list = $this->transactionService->fetch(request()->all())->get();
-        return $list;
+        return inertia()->render("v2/Payment/Transaction/Index",[
+            "list"=>$list
+        ]);
     }
 
     function create(){
-        
+        return inertia()->render("v2/Payment/Transaction/Create",[
+           
+        ]);        
     }
 
     function edit($id){
         $data = $this->transactionService->fetchById($id);
+        return inertia()->render("v2/Payment/Transaction/Edit",[
+            "data"=>$data
+        ]);
     }
 
     function show($id){
         $data = $this->transactionService->fetchById($id);
+        return inertia()->render("v2/Payment/Transaction/Show",[
+            "data"=>$data
+        ]);
     }
 
     function store(StoreRequest $request){

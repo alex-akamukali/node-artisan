@@ -1,6 +1,7 @@
 const Model = require("./model");
 const Service = require("./service");
 const FormRequest = require("./form-request");
+const SvelteComponent = require("./svelte-component");
 
 
 const Controller = function(path){
@@ -12,6 +13,11 @@ const Controller = function(path){
 
     let serviceBuilder = Service(path);
 
+    let svelteIndex = SvelteComponent(path + "/Index");
+    let svelteEdit = SvelteComponent(path + "/Edit");
+    let svelteCreate = SvelteComponent(path + "/Create");
+    let svelteShow = SvelteComponent(path + "/Show");
+
     function commit(){
         code.commit({
           name:code.getName(),
@@ -20,11 +26,23 @@ const Controller = function(path){
           namespace:code.getNamespace(),
           serviceName:serviceBuilder.getName(), 
           useStoreRequest:storeRequest.getUseStatment(),
-          useUpdateRequest:updateRequest.getUseStatment()
+          useUpdateRequest:updateRequest.getUseStatment(),
+
+          svelteIndex:svelteIndex.getViewPath(),
+          svelteEdit:svelteEdit.getViewPath(),
+          svelteCreate:svelteCreate.getViewPath(),
+          svelteShow:svelteShow.getViewPath()
+
         },'.php');
         serviceBuilder.commit();
         storeRequest.commit();
         updateRequest.commit();
+
+        svelteIndex.commit();
+        svelteEdit.commit();
+        svelteCreate.commit();
+        svelteShow.commit();
+        
     }
 
 
