@@ -1,11 +1,11 @@
 const Model = require("./model");
 
-const Repository = function (path) {
+const Repository = function (path,modelPath) {
   let code = Model(
     "app/Repositories/" + path + "Repository",
     "templates/repository.stub"
   );
-  let model = Model("app/Models/" + path);
+  let model = Model("app/Models/" + modelPath);
 
   function commit() {
     code.commit(

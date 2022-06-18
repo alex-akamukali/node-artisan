@@ -1,10 +1,10 @@
 const Model = require("./model");
 const Repository = require("./repository");
 
-const Service = function(path){
+const Service = function(path,modelPath){
 
     let code = Model('app/Services/' + path + "Service",'templates/service.stub');
-    let repo = Repository(path);
+    let repo = Repository(path,modelPath);
 
     function commit(){
       code.commit({

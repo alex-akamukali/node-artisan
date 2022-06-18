@@ -5,14 +5,14 @@ const SvelteComponent = require("./svelte-component");
 const SvelteForm = require("./svelte-form");
 
 
-const Controller = function(path,table=''){
+const Controller = function(path,modelPath,table=''){
 
     let code = Model("app/Http/Controllers/v1/" + path + "Controller","templates/controller.stub");
 
     let storeRequest = FormRequest(path + "/StoreRequest");
     let updateRequest = FormRequest(path + "/UpdateRequest");
 
-    let serviceBuilder = Service(path);
+    let serviceBuilder = Service(path,modelPath);
 
     let svelteIndex = SvelteComponent(path + "/Index");
     let svelteEdit = SvelteComponent(path + "/Edit");
