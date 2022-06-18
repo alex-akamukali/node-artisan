@@ -1,14 +1,19 @@
 let mysql = require("mysql");
+const dotenv = require('dotenv');
+
+dotenv.config();
+
 
 const DbConnection = function () {
   let connection = null;
   function initConnection() {
+    console.log(process.env.USER);
     connection = mysql.createConnection({
-      host: "127.0.0.1",
-      user: "root",
-      password: "",
-      port: 3310,
-      database:'canada-bid-db'
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      port: process.env.DB_PORT,
+      database:process.env.DB_NAME //'canada-bid-db'
     });
     connection.connect(function (err) {
       if (err) throw err;

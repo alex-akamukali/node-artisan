@@ -2,9 +2,10 @@ const Model = require("./model");
 const Service = require("./service");
 const FormRequest = require("./form-request");
 const SvelteComponent = require("./svelte-component");
+const SvelteForm = require("./svelte-form");
 
 
-const Controller = function(path){
+const Controller = function(path,table=''){
 
     let code = Model("app/Http/Controllers/v1/" + path + "Controller","templates/controller.stub");
 
@@ -17,6 +18,7 @@ const Controller = function(path){
     let svelteEdit = SvelteComponent(path + "/Edit");
     let svelteCreate = SvelteComponent(path + "/Create");
     let svelteShow = SvelteComponent(path + "/Show");
+    let svelteForm = SvelteForm(path + "/Form",table,code.getHyphenCase());
 
     function commit(){
         code.commit({
@@ -42,6 +44,8 @@ const Controller = function(path){
         svelteEdit.commit();
         svelteCreate.commit();
         svelteShow.commit();
+
+        svelteForm.commit();
         
     }
 

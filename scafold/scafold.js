@@ -9,6 +9,7 @@ const GenerateScafold = function(){
     }
 
     const createFilePath = (path,data)=>{
+        // console.log(path);
         let pathSplit = path.split('/');
         let file = pathSplit[pathSplit.length - 1];
         pathSplit.pop();

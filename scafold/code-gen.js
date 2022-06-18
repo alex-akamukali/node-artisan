@@ -57,6 +57,12 @@ const CodeGen = function(path,template){
        return newCharList.join(''); 
     }
 
+    function getHyphenCase(){
+      return getSnakeCase().split('_').join('-');
+    }
+
+
+
     const pathArray = decodePath(path);
 
 
@@ -66,7 +72,8 @@ const CodeGen = function(path,template){
         getSnakeCase,
         getPathArray,
         commit,
-        copy 
+        copy,
+        getHyphenCase 
     });
 
 };
