@@ -20,9 +20,12 @@ const Controller = function(path,modelPath,table=''){
     let svelteEdit = SvelteComponent(path + "/Edit");
     let svelteCreate = SvelteComponent(path + "/Create");
     let svelteShow = SvelteComponent(path + "/Show");
-    let svelteForm = SvelteForm(path + "/Form",table,code.getHyphenCase());
-
+    
     let labelBuilder = Model(path,""); //just to re-use functionality.
+
+    let svelteForm = SvelteForm(path + "/Form",table,labelBuilder.getHyphenCase());
+
+    
     let svelteCreateModal = SvelteCreateModal(path + "/ModalCreate",table,labelBuilder.getHumanCase());
     let svelteUpdateModal = SvelteUpdateModal(path + "/ModalUpdate",table,labelBuilder.getHumanCase());
 
