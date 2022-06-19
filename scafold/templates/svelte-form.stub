@@ -1,7 +1,7 @@
 import { useForm } from "@inertiajs/inertia-svelte";
 import {get} from "svelte/store";
 
-let resource = '{resource}';
+let resource = '{resource}/';
 export function setResource(rsc){
  resource = rsc;
 }
