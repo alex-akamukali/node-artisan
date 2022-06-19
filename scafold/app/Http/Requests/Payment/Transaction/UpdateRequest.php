@@ -24,7 +24,12 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "fid" => "required",
+            "fileURL" => "required",
+            "fileName" => "required",
+            "userid" => "required",
+            "bid_id" => "required",
+            "isActive" => "required"
         ];
     }
 }

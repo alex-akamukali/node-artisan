@@ -40,25 +40,59 @@ const CodeGen = function(path,template){
       scafold.generate(__dirname + '/' +  template,getPath() + ext,data);
     }
 
-    function getSnakeCase(){
-       let name = getName();
-       let charList = name.split('');
-       let newCharList = [];
-       for (let i in charList){
-           let char = charList[i];
-           let isUpperCase = (char.toLowerCase() != char); 
-           if (i > 0 && isUpperCase){
-              newCharList.push('_');
+    function _getSnakeCase(str){
+      let name = str;
+      let charList = name.split('');
+      let newCharList = [];
+      for (let i in charList){
+          let char = charList[i];
+          let isUpperCase = (char.toLowerCase() != char); 
+          if (i > 0 && isUpperCase){
+             newCharList.push('_');
+             newCharList.push(char.toLowerCase());
+          }else{
               newCharList.push(char.toLowerCase());
-           }else{
-               newCharList.push(char.toLowerCase());
-           }
-       }
-       return newCharList.join(''); 
+          }
+      }
+      return newCharList.join(''); 
+   }
+
+
+    function getSnakeCase(){
+      return _getSnakeCase(getName());
     }
 
+    function _getHyphenCase(str){
+      return _getSnakeCase(str).split('_').join('-');
+    }
+
+
     function getHyphenCase(){
-      return getSnakeCase().split('_').join('-');
+      return _getHyphenCase(getName());
+      // return getSnakeCase().split('_').join('-');
+    }
+
+    function _getHumanCase(str){
+      let r = _getHyphenCase(str).split('-');
+      let t = [];
+      for (let i in r){
+        if (r[i]){
+          t.push(ucFirst(r[i]));
+        }
+        
+      }
+      return t.join(' ');
+    }
+
+    function ucFirst(str){
+      let r = str.split('');
+      // console.log(str,r);
+      r[0] = r[0].toUpperCase();
+      return r.join('');
+    }
+
+    function getHumanCase(){
+       return _getHumanCase(getName());
     }
 
 
@@ -73,7 +107,10 @@ const CodeGen = function(path,template){
         getPathArray,
         commit,
         copy,
-        getHyphenCase 
+        getHyphenCase,
+        _getHumanCase,
+        getHumanCase,
+        ucFirst 
     });
 
 };

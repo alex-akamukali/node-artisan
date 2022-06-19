@@ -3,14 +3,16 @@ const Service = require("./service");
 const FormRequest = require("./form-request");
 const SvelteComponent = require("./svelte-component");
 const SvelteForm = require("./svelte-form");
+const SvelteCreateModal = require("./svelte-create-modal");
+const SvelteUpdateModal = require("./svelte-update-modal");
 
 
 const Controller = function(path,modelPath,table=''){
 
     let code = Model("app/Http/Controllers/v1/" + path + "Controller","templates/controller.stub");
 
-    let storeRequest = FormRequest(path + "/StoreRequest");
-    let updateRequest = FormRequest(path + "/UpdateRequest");
+    let storeRequest = FormRequest(path + "/StoreRequest",table);
+    let updateRequest = FormRequest(path + "/UpdateRequest",table);
 
     let serviceBuilder = Service(path,modelPath);
 
@@ -19,6 +21,10 @@ const Controller = function(path,modelPath,table=''){
     let svelteCreate = SvelteComponent(path + "/Create");
     let svelteShow = SvelteComponent(path + "/Show");
     let svelteForm = SvelteForm(path + "/Form",table,code.getHyphenCase());
+
+    let labelBuilder = Model(path,""); //just to re-use functionality.
+    let svelteCreateModal = SvelteCreateModal(path + "/ModalCreate",table,labelBuilder.getHumanCase());
+    let svelteUpdateModal = SvelteUpdateModal(path + "/ModalUpdate",table,labelBuilder.getHumanCase());
 
     function commit(){
         code.commit({
@@ -46,6 +52,9 @@ const Controller = function(path,modelPath,table=''){
         svelteShow.commit();
 
         svelteForm.commit();
+
+        svelteCreateModal.commit();
+        svelteUpdateModal.commit();
         
     }
 

@@ -1,0 +1,28 @@
+<script context="module">
+    import {
+        Modal,
+    } from "nodejs-svelte-crud-helper";
+</script>
+<script>
+
+  export let {actionContainer};
+  export let {action};
+
+</script>
+
+
+<Modal id="modal-{action}" on:submit={{action}}>
+    <span slot="title">{label}</span>
+
+    <div class="col-md-12" slot="content">
+
+<!-- content here  -->
+
+  {fieldSet}
+
+    </div>
+
+    <button type="submit" class="btn btn-primary" slot="storeButton">
+        <i class="fa fa-save" /> &nbsp; {actionLabel}
+    </button>
+</Modal>
