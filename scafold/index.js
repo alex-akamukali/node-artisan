@@ -1,12 +1,13 @@
-const Controller = require("./controller");
-const TableFields = require("./table-fields");
+// const Controller = require("./controller");
+const Route = require("./route");
+// const TableFields = require("./table-fields");
 
 // let $repo = 'Payment/Transaction';
 
-let code = Controller(
-  "Payment/Transaction", //repo-path
-  "Payment/Transaction", //model-path
-  "filebase"
+let code = Route(
+  "Workflow/FirstInterview", //repo-path
+  "Workflow/FirstInterview", //model-path
+  "solicitations"  //"filebase"
 );
 
 // let query = TableFields('bidrecords');

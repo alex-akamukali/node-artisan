@@ -18,7 +18,13 @@ const GenerateScafold = function(){
             fs.writeFileSync(path,data,"utf-8");
         }
         
-    };        
+    }; 
+    
+    const writeFilePath =(path,data)=>{
+        if (fs.existsSync(path)){
+            fs.writeFileSync(path,data,"utf-8");
+        } 
+    };
 
     const generate =(fromTemplate,toTarget,data)=>{
         let fromData = readFilePath(fromTemplate);
@@ -28,9 +34,19 @@ const GenerateScafold = function(){
         //fromData;
         createFilePath(toTarget,fromData);
     }
+
+    function generateAppend(fromTemplate,toTarget,data){
+        let fromData = readFilePath(fromTemplate);
+        for (let i in data){
+            fromData = fromData.split("{" + i + "}").join(data[i]);
+        }
+        let toData = readFilePath(toTarget);
+        writeFilePath(toTarget,toData + "\n" + fromData);
+    }
     
     return Object.seal({
-        generate
+        generate,
+        generateAppend
     });
 };
 

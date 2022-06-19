@@ -40,6 +40,10 @@ const CodeGen = function(path,template){
       scafold.generate(__dirname + '/' +  template,getPath() + ext,data);
     }
 
+    function commitAppend(data,ext=".php"){
+      scafold.generateAppend(__dirname + '/' +  template,getPath() + ext,data);
+    }
+
     function _getSnakeCase(str){
       let name = str;
       let charList = name.split('');
@@ -106,6 +110,7 @@ const CodeGen = function(path,template){
         getSnakeCase,
         getPathArray,
         commit,
+        commitAppend,
         copy,
         getHyphenCase,
         _getHumanCase,
