@@ -8,6 +8,8 @@ export function setResource(rsc){
 
 export let updateForm = useForm({fields});
 
+export let indexForm = useForm({fields});
+
 export let createForm = useForm({fields});
 
 
