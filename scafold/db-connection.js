@@ -7,13 +7,13 @@ dotenv.config();
 const DbConnection = function () {
   let connection = null;
   function initConnection() {
-    console.log(process.env.USER);
+    // console.log(process.env.USER);
     connection = mysql.createConnection({
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      port: process.env.DB_PORT,
-      database:process.env.DB_NAME //'canada-bid-db'
+      host: process.env.DB_HOST2,
+      user: process.env.DB_USER2,
+      password: process.env.DB_PASSWORD2,
+      port: process.env.DB_PORT2,
+      database:process.env.DB_NAME2 //'canada-bid-db'
     });
     connection.connect(function (err) {
       if (err) throw err;

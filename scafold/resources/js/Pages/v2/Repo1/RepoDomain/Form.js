@@ -1,7 +1,7 @@
 import { useForm } from "@inertiajs/inertia-svelte";
 import {get} from "svelte/store";
 
-let resource = 'transaction-controller';
+let resource = 'repo-domain/';
 export function setResource(rsc){
  resource = rsc;
 }

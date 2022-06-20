@@ -5,14 +5,14 @@
 </script>
 <script>
 
-  export let createForm;
-  export let create;
+  export let updateForm;
+  export let update;
 
 </script>
 
 
-<Modal id="modal-create" on:submit={create}>
-    <span slot="title">Transaction</span>
+<Modal id="modal-update" on:submit={update}>
+    <span slot="title">Repo Domain</span>
 
     <div class="col-md-12" slot="content">
 
@@ -29,7 +29,7 @@
     class="form-control"
     placeholder=""
     required=""
-    bind:value={$createForm.fid}
+    bind:value={$updateForm.fid}
 />
 
 </div> 
@@ -45,7 +45,7 @@
     class="form-control"
     placeholder=""
     required=""
-    bind:value={$createForm.fileURL}
+    bind:value={$updateForm.fileURL}
 />
 
 </div> 
@@ -61,7 +61,7 @@
     class="form-control"
     placeholder=""
     required=""
-    bind:value={$createForm.fileName}
+    bind:value={$updateForm.fileName}
 />
 
 </div> 
@@ -77,7 +77,7 @@
     class="form-control"
     placeholder=""
     required=""
-    bind:value={$createForm.userid}
+    bind:value={$updateForm.userid}
 />
 
 </div> 
@@ -93,7 +93,7 @@
     class="form-control"
     placeholder=""
     required=""
-    bind:value={$createForm.bid_id}
+    bind:value={$updateForm.bid_id}
 />
 
 </div> 
@@ -109,7 +109,7 @@
     class="form-control"
     placeholder=""
     required=""
-    bind:value={$createForm.isActive}
+    bind:value={$updateForm.isActive}
 />
 
 </div> 
@@ -119,6 +119,6 @@
     </div>
 
     <button type="submit" class="btn btn-primary" slot="storeButton">
-        <i class="fa fa-save" /> &nbsp; Create Transaction
+        <i class="fa fa-save" /> &nbsp; Update Repo Domain
     </button>
 </Modal>

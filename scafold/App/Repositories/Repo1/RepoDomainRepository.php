@@ -1,36 +1,36 @@
 <?php
-namespace App\Repositories\Payment;
-use App\Models\Payment\Transaction;
+namespace App\Repositories\Repo1;
+use App\Models\Model1\Model\Entity;
 //use Illuminate\Support\Facades\Auth;
 
-class TransactionRepository
+class RepoDomainRepository
 {
 
 
     function query(){
-        $query = Transaction::query();
+        $query = Entity::query();
         return $query;
     }
 
     function fetchById($id){
-        $record = Transaction::query()->find($id);
+        $record = Entity::query()->find($id);
         return $record;
     }
 
 
     function update($id,$data){
-        $record = Transaction::query()->find($id);
+        $record = Entity::query()->find($id);
         $record->update($data);
         return $record;
     }
 
     function create($data){
-        $record = Transaction::create($data);
+        $record = Entity::create($data);
         return $record;
     }
 
     function remove($id){
-        $record = Transaction::query()->find($id);
+        $record = Entity::query()->find($id);
         $record->delete();
         return $record;
     }

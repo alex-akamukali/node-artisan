@@ -1,16 +1,43 @@
-// const Controller = require("./controller");
+#!/usr/bin/env node
+
 const Route = require("./route");
-// const TableFields = require("./table-fields");
+const readline = require("readline").createInterface({
+    input:process.stdin,
+    output:process.stdout
+});
 
-// let $repo = 'Payment/Transaction';
+let repository = '';
+let model = '';
+let table = '';
+readline.question("Repository:",function(ans1){
+    repository = ans1;
 
-let code = Route(
-  "Workflow/FirstInterview", //repo-path
-  "Workflow/FirstInterview", //model-path
-  "solicitations"  //"filebase"
-);
+    
+    readline.question("Model:",function(ans2){
+        model = ans2;
+        
+
+        readline.question("Table:",function(ans3){
+            table = ans3;
+
+            
+            let code = Route(
+                repository, //repo-path
+                model, //model-path
+                table  //"filebase"
+            );
+
+            code.commit();
+
+            readline.close();
+              
+        });
+        
+    });
+    
+});
 
 // let query = TableFields('bidrecords');
 // query.getFields().then(res=>console.log(res)).catch(err=>console.log(err));
 
-code.commit();
+// code.commit();
