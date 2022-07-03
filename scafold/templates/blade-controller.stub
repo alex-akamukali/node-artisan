@@ -1,0 +1,73 @@
+<?php
+namespace {namespace};
+use {serviceUse};
+use {useStoreRequest};
+use {useUpdateRequest};
+use App\Http\Controllers\Controller;
+//use Illuminate\Http\Request;
+
+class {name} extends Controller
+{
+    //
+    private ${serviceVariable} = null;
+
+    function __construct({serviceName} ${serviceVariable}){
+        $this->{serviceVariable} = ${serviceVariable};
+    }
+
+    function index(){
+        $list = $this->{serviceVariable}->fetch(request()->all())->get();
+        return view("{bladeIndex}",[
+            "list"=>$list
+        ]);
+    }
+
+    function create(){
+        return view("{bladeCreate}",[
+           
+        ]);        
+    }
+
+    function edit($id){
+        $data = $this->{serviceVariable}->fetchById($id);
+        return view("{bladeEdit}",[
+            "data"=>$data
+        ]);
+    }
+
+    function show($id){
+        $data = $this->{serviceVariable}->fetchById($id);
+        return view("{bladeShow}",[
+            "data"=>$data
+        ]);
+    }
+
+    function store(StoreRequest $request){
+      $new = $this->{serviceVariable}->create($request->validated());
+      
+      return redirect()->back()->with([
+            'message' => 'New Record Added Successfully',
+            'error'   => false,
+            'data'    => $new
+      ]);
+    }
+
+    function update($id,UpdateRequest $updateRequest){
+        $record = $this->{serviceVariable}->update($id,$updateRequest->validated());
+        return redirect()->back()->with([
+            'message' => 'Record updated successfully',
+            'error'   => false,
+            'data'    => $record
+        ]);
+    }
+
+    function destroy($id){
+      $removed = $this->{serviceVariable}->remove($id);
+        return redirect()->back()->with([
+            'message' => 'Record removed successfully',
+            'error'   => false,
+            'data'    => $data
+        ]);      
+    }
+
+}
