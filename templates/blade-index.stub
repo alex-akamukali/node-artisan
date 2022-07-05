@@ -15,7 +15,7 @@
 @include('{bladeCreateViewPath}')
 
 @foreach ($list as $index=>$item)
- @include('{bladeEditViewPath}');
+ @include('{bladeEditViewPath}')
 @endforeach
 
 <div class="row">
