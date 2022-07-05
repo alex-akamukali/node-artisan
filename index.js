@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const Route = require("./route");
 const readline = require("readline").createInterface({
     input:process.stdin,
