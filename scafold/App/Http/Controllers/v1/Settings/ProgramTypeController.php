@@ -1,49 +1,49 @@
 <?php
-namespace App\Http\Controllers\v1\Finance;
-use App\Services\Finance\PaymentService;
-use App\Http\Requests\Finance\Payment\StoreRequest;
-use App\Http\Requests\Finance\Payment\UpdateRequest;
+namespace App\Http\Controllers\v1\Settings;
+use App\Services\Settings\ProgramTypeService;
+use App\Http\Requests\Settings\ProgramType\StoreRequest;
+use App\Http\Requests\Settings\ProgramType\UpdateRequest;
 use App\Http\Controllers\Controller;
 //use Illuminate\Http\Request;
 
-class PaymentController extends Controller
+class ProgramTypeController extends Controller
 {
     //
-    private $paymentService = null;
+    private $programTypeService = null;
 
-    function __construct(PaymentService $paymentService){
-        $this->paymentService = $paymentService;
+    function __construct(ProgramTypeService $programTypeService){
+        $this->programTypeService = $programTypeService;
     }
 
     function index(){
-        $list = $this->paymentService->fetch(request()->all())->get();
-        return inertia()->render("v2/Finance/Payment/Index",[
+        $list = $this->programTypeService->fetch(request()->all())->get();
+        return view("Settings/ProgramType/index",[
             "list"=>$list
         ]);
     }
 
     function create(){
-        return inertia()->render("v2/Finance/Payment/Create",[
+        return view("",[
            
         ]);        
     }
 
     function edit($id){
-        $data = $this->paymentService->fetchById($id);
-        return inertia()->render("v2/Finance/Payment/Edit",[
+        $data = $this->programTypeService->fetchById($id);
+        return view("",[
             "data"=>$data
         ]);
     }
 
     function show($id){
-        $data = $this->paymentService->fetchById($id);
-        return inertia()->render("v2/Finance/Payment/Show",[
+        $data = $this->programTypeService->fetchById($id);
+        return view("",[
             "data"=>$data
         ]);
     }
 
     function store(StoreRequest $request){
-      $new = $this->paymentService->create($request->validated());
+      $new = $this->programTypeService->create($request->validated());
       
       return redirect()->back()->with([
             'message' => 'New Record Added Successfully',
@@ -53,7 +53,7 @@ class PaymentController extends Controller
     }
 
     function update($id,UpdateRequest $updateRequest){
-        $record = $this->paymentService->update($id,$updateRequest->validated());
+        $record = $this->programTypeService->update($id,$updateRequest->validated());
         return redirect()->back()->with([
             'message' => 'Record updated successfully',
             'error'   => false,
@@ -62,7 +62,7 @@ class PaymentController extends Controller
     }
 
     function destroy($id){
-      $removed = $this->paymentService->remove($id);
+      $removed = $this->programTypeService->remove($id);
         return redirect()->back()->with([
             'message' => 'Record removed successfully',
             'error'   => false,

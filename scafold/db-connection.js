@@ -24,6 +24,7 @@ const DbConnection = function () {
   initConnection();
 
   function query(sql){
+    initConnection();
       return new Promise((resolve,reject)=>{
         connection.query(sql,(err,result)=>{
            if (err)reject(err); 

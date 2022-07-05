@@ -5,9 +5,12 @@ const SvelteComponent = require("./svelte-component");
 const SvelteForm = require("./svelte-form");
 const SvelteCreateModal = require("./svelte-create-modal");
 const SvelteUpdateModal = require("./svelte-update-modal");
+const BladeIndex = require("./blade-index");
 
 
 const BladeController = function(path,modelPath,table=''){
+
+    
 
     let code = Model("app/Http/Controllers/v1/" + path + "Controller","templates/blade-controller.stub");
 
@@ -16,18 +19,14 @@ const BladeController = function(path,modelPath,table=''){
 
     let serviceBuilder = Service(path,modelPath);
 
-    let svelteIndex = SvelteComponent(path + "/Index");
-    let svelteEdit = SvelteComponent(path + "/Edit");
-    let svelteCreate = SvelteComponent(path + "/Create");
-    let svelteShow = SvelteComponent(path + "/Show");
+    
     
     let labelBuilder = Model(path,""); //just to re-use functionality.
 
-    let svelteForm = SvelteForm(path + "/Form",table,labelBuilder.getHyphenCase());
-
+    let bladeIndex = BladeIndex(path + "/index",table,labelBuilder.getHumanCase());
     
-    let svelteCreateModal = SvelteCreateModal(path + "/ModalCreate",table,labelBuilder.getHumanCase());
-    let svelteUpdateModal = SvelteUpdateModal(path + "/ModalUpdate",table,labelBuilder.getHumanCase());
+    // let svelteCreateModal = SvelteCreateModal(path + "/ModalCreate",table,labelBuilder.getHumanCase());
+    // let svelteUpdateModal = SvelteUpdateModal(path + "/ModalUpdate",table,labelBuilder.getHumanCase());
 
     function commit(){
         code.commit({
@@ -39,28 +38,32 @@ const BladeController = function(path,modelPath,table=''){
           useStoreRequest:storeRequest.getUseStatment(),
           useUpdateRequest:updateRequest.getUseStatment(),
 
-          svelteIndex:svelteIndex.getViewPath(),
-          svelteEdit:svelteEdit.getViewPath(),
-          svelteCreate:svelteCreate.getViewPath(),
-          svelteShow:svelteShow.getViewPath()
+          bladeIndex:bladeIndex.getViewPath(),
+          bladeShow:'',
+          bladeEdit:'',
+          bladeCreate:''
+
+        //   svelteEdit:svelteEdit.getViewPath(),
+        //   svelteCreate:svelteCreate.getViewPath(),
+        //   svelteShow:svelteShow.getViewPath()
 
         },'.php');
         serviceBuilder.commit();
         storeRequest.commit();
         updateRequest.commit();
 
-        svelteIndex.commit();
-        svelteEdit.commit();
-        svelteCreate.commit();
-        svelteShow.commit();
+        bladeIndex.commit();
+        
+        // svelteEdit.commit();
+        // svelteCreate.commit();
+        // svelteShow.commit();
 
-        svelteForm.commit();
+        // svelteForm.commit();
 
-        svelteCreateModal.commit();
-        svelteUpdateModal.commit();
+        // svelteCreateModal.commit();
+        // svelteUpdateModal.commit();
         
     }
-
 
     return Object.seal({
         ...code,

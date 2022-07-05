@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Repo1\RepoDomain;
+namespace App\Http\Requests\Settings\ProgramType;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,12 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            "fid"=>"required",
-"fileURL"=>"required",
-"fileName"=>"required",
-"userid"=>"required",
-"bid_id"=>"required",
-"isActive"=>"required"
+            "id"=>"required",
+"title"=>"required",
+"description"=>"required",
+"status"=>"required",
+"created_at"=>"required",
+"updated_at"=>"required"
         ];
     }
 }

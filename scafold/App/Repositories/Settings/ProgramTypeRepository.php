@@ -1,36 +1,36 @@
 <?php
-namespace App\Repositories\Finance;
-use App\Models\Finance\Payment;
+namespace App\Repositories\Settings;
+use App\Models\Settings\ProgramType;
 //use Illuminate\Support\Facades\Auth;
 
-class PaymentRepository
+class ProgramTypeRepository
 {
 
 
     function query(){
-        $query = Payment::query();
+        $query = ProgramType::query();
         return $query;
     }
 
     function fetchById($id){
-        $record = Payment::query()->find($id);
+        $record = ProgramType::query()->find($id);
         return $record;
     }
 
 
     function update($id,$data){
-        $record = Payment::query()->find($id);
+        $record = ProgramType::query()->find($id);
         $record->update($data);
         return $record;
     }
 
     function create($data){
-        $record = Payment::create($data);
+        $record = ProgramType::create($data);
         return $record;
     }
 
     function remove($id){
-        $record = Payment::query()->find($id);
+        $record = ProgramType::query()->find($id);
         $record->delete();
         return $record;
     }

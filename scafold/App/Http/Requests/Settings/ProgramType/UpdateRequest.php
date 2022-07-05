@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Finance\Payment;
+namespace App\Http\Requests\Settings\ProgramType;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,20 +24,12 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            "bidid"=>"required",
-"Title"=>"required",
-"Description"=>"required",
-"ClosingDateNTime"=>"required",
-"NoteOnTime"=>"required",
-"Location"=>"required",
-"SocioEconomicCriteria"=>"required",
-"Evaluation"=>"required",
-"Terms"=>"required",
-"SecurityInfo"=>"required",
-"Comment"=>"required",
-"ContactInfo"=>"required",
-"EstContractValue"=>"required",
-"isActive"=>"required"
+            "id"=>"required",
+"title"=>"required",
+"description"=>"required",
+"status"=>"required",
+"created_at"=>"required",
+"updated_at"=>"required"
         ];
     }
 }

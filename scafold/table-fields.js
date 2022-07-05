@@ -14,6 +14,7 @@ const TableFields = function (table) {
     for (let i in res){
       fields.push(res[i].Field);
     }
+    // connection.end();
     return Promise.resolve(fields);
   }
    

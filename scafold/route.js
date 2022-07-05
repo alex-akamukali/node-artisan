@@ -1,11 +1,14 @@
+const BladeController = require("./blade-controller");
 const Controller = require("./controller");
 const Model = require("./model");
 
 
 const Route = function(path,modelPath,table){
 
+    
+
     let code = Model("routes/web","templates/route.stub");
-    let controller = Controller(path,modelPath,table);
+    let controller = BladeController(path,modelPath,table);
     let auxModel = Model(path,"");
 
     function commit(){
