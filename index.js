@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const Route = require("./route");
 const readline = require("readline").createInterface({
     input:process.stdin,
@@ -10,6 +8,7 @@ let repository = '';
 let model = '';
 let table = '';
 readline.question("Repository:",function(ans1){
+    //#!/usr/bin/env node
     repository = ans1;
 
     
