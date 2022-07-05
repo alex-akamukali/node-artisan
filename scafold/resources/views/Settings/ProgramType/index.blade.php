@@ -12,10 +12,10 @@
 @endsection
 @section('content')
 
-@include(Settings.ProgramType.create)
+@include('Settings.ProgramType.create')
 
 @foreach ($list as $index=>$item)
- @include(Settings.ProgramType.edit);
+ @include('Settings.ProgramType.edit');
 @endforeach
 
 <div class="row">

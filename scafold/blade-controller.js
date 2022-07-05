@@ -7,9 +7,12 @@ const SvelteCreateModal = require("./svelte-create-modal");
 const SvelteUpdateModal = require("./svelte-update-modal");
 const BladeIndex = require("./blade-index");
 const BladeModal = require("./blade-modal");
+const BladeEditModal = require("./blade-edit-modal");
 
 
 const BladeController = function(path,modelPath,table=''){
+
+    
 
     let code = Model("app/Http/Controllers/v1/" + path + "Controller","templates/blade-controller.stub");
 
@@ -25,7 +28,7 @@ const BladeController = function(path,modelPath,table=''){
     let bladeCreate = BladeModal({path: path + "/create",tableName:table,
     title:labelBuilder.getHumanCase(),id:"modal-create",action:"Add",actionCommit:"Create",routeAction:labelBuilder.getHyphenCase() + ".store"});
 
-    let bladeEdit = BladeModal({path: path + "/edit",tableName:table,
+    let bladeEdit = BladeEditModal({path: path + "/edit",tableName:table,
     title:labelBuilder.getHumanCase(),id:"modal-edit",action:"Edit",actionCommit:"Update",routeAction:labelBuilder.getHyphenCase() + ".update"});
 
     let bladeIndex = BladeIndex(path + "/index",table,labelBuilder.getHumanCase(),bladeCreate.getViewPath(),bladeEdit.getViewPath(),labelBuilder.getHyphenCase() + ".destroy");

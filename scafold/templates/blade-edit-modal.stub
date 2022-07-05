@@ -1,5 +1,6 @@
-<form action="{{ route('{routeAction}') }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('{routeAction}',$item->id) }}" method="post" enctype="multipart/form-data">
 @csrf 
+@method('PUT')
 <div class="modal fade in" id="{id}" aria-hidden="false">
   <div class="modal-dialog">
     <div class="modal-content">

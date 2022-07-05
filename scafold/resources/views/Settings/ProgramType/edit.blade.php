@@ -1,4 +1,6 @@
-<form action="{{ route('program-type.update') }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('program-type.update',$item->id) }}" method="post" enctype="multipart/form-data">
+@csrf 
+@method('PUT')
 <div class="modal fade in" id="modal-edit" aria-hidden="false">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -18,42 +20,42 @@
         <label class="control-label">Id
           <b style="color:red">*</b>
         </label>
-        <input class="form-control" name="id" placeholder="Id" />
+        <input class="form-control" name="id" placeholder="Id" value="{{ $item->id }}" />
        </div>
 
 <div class="col-md-12">
         <label class="control-label">Title
           <b style="color:red">*</b>
         </label>
-        <input class="form-control" name="title" placeholder="Title" />
+        <input class="form-control" name="title" placeholder="Title" value="{{ $item->title }}" />
        </div>
 
 <div class="col-md-12">
         <label class="control-label">Description
           <b style="color:red">*</b>
         </label>
-        <input class="form-control" name="description" placeholder="Description" />
+        <input class="form-control" name="description" placeholder="Description" value="{{ $item->description }}" />
        </div>
 
 <div class="col-md-12">
         <label class="control-label">Status
           <b style="color:red">*</b>
         </label>
-        <input class="form-control" name="status" placeholder="Status" />
+        <input class="form-control" name="status" placeholder="Status" value="{{ $item->status }}" />
        </div>
 
 <div class="col-md-12">
         <label class="control-label">Created At
           <b style="color:red">*</b>
         </label>
-        <input class="form-control" name="created_at" placeholder="Created At" />
+        <input class="form-control" name="created_at" placeholder="Created At" value="{{ $item->created_at }}" />
        </div>
 
 <div class="col-md-12">
         <label class="control-label">Updated At
           <b style="color:red">*</b>
         </label>
-        <input class="form-control" name="updated_at" placeholder="Updated At" />
+        <input class="form-control" name="updated_at" placeholder="Updated At" value="{{ $item->updated_at }}" />
        </div>
                 
                 </div>
