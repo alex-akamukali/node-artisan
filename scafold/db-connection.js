@@ -21,7 +21,7 @@ const DbConnection = function () {
     });
   }
 
-  initConnection();
+  // initConnection();
 
   function query(sql){
     initConnection();

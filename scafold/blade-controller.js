@@ -6,11 +6,10 @@ const SvelteForm = require("./svelte-form");
 const SvelteCreateModal = require("./svelte-create-modal");
 const SvelteUpdateModal = require("./svelte-update-modal");
 const BladeIndex = require("./blade-index");
+const BladeModal = require("./blade-modal");
 
 
 const BladeController = function(path,modelPath,table=''){
-
-    
 
     let code = Model("app/Http/Controllers/v1/" + path + "Controller","templates/blade-controller.stub");
 
@@ -19,11 +18,12 @@ const BladeController = function(path,modelPath,table=''){
 
     let serviceBuilder = Service(path,modelPath);
 
-    
-    
     let labelBuilder = Model(path,""); //just to re-use functionality.
 
     let bladeIndex = BladeIndex(path + "/index",table,labelBuilder.getHumanCase());
+
+    let bladeCreate = BladeModal({path: path + "/create",tableName:table,
+    title:labelBuilder.getHumanCase(),id:"modal-create",action:"Add",actionCommit:"Create"});
     
     // let svelteCreateModal = SvelteCreateModal(path + "/ModalCreate",table,labelBuilder.getHumanCase());
     // let svelteUpdateModal = SvelteUpdateModal(path + "/ModalUpdate",table,labelBuilder.getHumanCase());
@@ -41,7 +41,7 @@ const BladeController = function(path,modelPath,table=''){
           bladeIndex:bladeIndex.getViewPath(),
           bladeShow:'',
           bladeEdit:'',
-          bladeCreate:''
+          bladeCreate:bladeCreate.getViewPath()
 
         //   svelteEdit:svelteEdit.getViewPath(),
         //   svelteCreate:svelteCreate.getViewPath(),
@@ -53,6 +53,7 @@ const BladeController = function(path,modelPath,table=''){
         updateRequest.commit();
 
         bladeIndex.commit();
+        bladeCreate.commit();
         
         // svelteEdit.commit();
         // svelteCreate.commit();

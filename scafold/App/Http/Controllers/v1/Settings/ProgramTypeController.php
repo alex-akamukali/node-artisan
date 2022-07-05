@@ -17,7 +17,7 @@ class ProgramTypeController extends Controller
 
     function index(){
         $list = $this->programTypeService->fetch(request()->all())->get();
-        return view("Settings/ProgramType/index",[
+        return view("Settings.ProgramType.index",[
             "list"=>$list
         ]);
     }

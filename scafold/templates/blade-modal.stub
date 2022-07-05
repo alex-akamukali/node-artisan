@@ -1,0 +1,35 @@
+<div class="modal fade in" id="{id}" aria-hidden="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title">
+          <span slot="title">{action} {title}</span>
+        </h4>
+      </div>
+      <form class="form-horizontal" method="post">
+         <div class="modal-body">
+           <div class="row">
+             <div class="col-md-12" slot="content">                
+                {fieldSet}                
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+
+          <button type="submit" class="btn btn-primary">
+            <i class="fa fa-save"></i> &nbsp; {actionCommit}
+          </button>
+        
+        </div>
+    </form>
+    
+    </div>
+    
+ </div>
+
+</div>

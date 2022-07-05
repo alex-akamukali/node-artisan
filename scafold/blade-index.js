@@ -1,8 +1,9 @@
+// const BladeModal = require("./blade-modal");
 const CodeGen = require("./code-gen");
 const TableFields = require("./table-fields");
 
 
-const BladeIndex = function(path,tableName,title){
+const BladeIndex = function(path,tableName,title,bladeCreateModal,bladeEditModal){
  
     let code = CodeGen("resources/views/" + path,"templates/blade-index.stub");
     let query = TableFields(tableName);
@@ -13,13 +14,15 @@ const BladeIndex = function(path,tableName,title){
         tableHeader: await renderTableHeaders(),
         tableRow: await renderTableRows()
        },".blade.php");
+       bladeCreateModal.commit();
+       bladeEditModal.commit();
     }
 
     //v2/Settings/Config/Index
 
     function getViewPath(){
       let p = code.getPath().split("resources/views/");
-      p = p[1];
+      p = p[1].split('/').join("\\").split("\\").join(".");
       return p;
     }
 
@@ -30,7 +33,7 @@ const BladeIndex = function(path,tableName,title){
         r.push(_renderTableHeaders(code._getHumanCase(item)));
       });
       console.log(r);
-      return r.join("\n");
+      return Promise.resolve(r.join("\n"));
     }
 
     function _renderTableHeaders(label){
