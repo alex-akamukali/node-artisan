@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "repo-gen": "node index.js"
   },
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/alex-akamukali/node-artisan#readme",
   "dependencies": {
-    "artisan": "file:scafold"
+    "dotenv": "^16.0.1",
+    "mysql": "^2.18.1"
   }
 }

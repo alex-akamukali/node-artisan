@@ -1,7 +1,7 @@
 <?php 
 namespace App\Services;
 
-class UserService1{
+class {name}{
 
    private $fields = [{fields}];
 
