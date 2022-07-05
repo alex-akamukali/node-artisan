@@ -54,7 +54,7 @@ const BladeIndex = function(path,tableName,title,bladeCreateViewPath,bladeEditVi
     }
 
     function _renderTableRows(field){
-       return `<td>{$item->${field}}</td>`;
+       return `<td>{{$item->${field}}}</td>`;
     }
 
     return Object.seal({
