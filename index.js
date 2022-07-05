@@ -8,7 +8,7 @@ let repository = '';
 let model = '';
 let table = '';
 readline.question("Repository:",function(ans1){
-    //#!/usr/bin/env node
+    
     repository = ans1;
 
     
