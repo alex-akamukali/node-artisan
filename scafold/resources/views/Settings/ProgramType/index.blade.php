@@ -12,6 +12,12 @@
 @endsection
 @section('content')
 
+@include(Settings.ProgramType.create)
+
+@foreach ($list as $index=>$item)
+ @include(Settings.ProgramType.edit);
+@endforeach
+
 <div class="row">
   <div class="col-md-12">
    <div class="box box-info">
@@ -61,7 +67,12 @@
                       <i class="fa fa-edit text-green"></i>
                    </a>
                     &nbsp;&nbsp;
-                   <a><i class="fa fa-trash text-red"></i></a>
+                    <form style="display: inline-block;" method="post" action="{{ route('program-type.destroy',$item->id) }}">
+                       @csrf
+                       @method('DELETE')
+                       <button><i class="fa fa-trash text-red"></i></button>
+                    </form>
+                   
                   </td> 
                  </tr>  
                 @endforeach

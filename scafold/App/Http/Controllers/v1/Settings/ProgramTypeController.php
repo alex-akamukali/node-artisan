@@ -23,7 +23,7 @@ class ProgramTypeController extends Controller
     }
 
     function create(){
-        return view("",[
+        return view("Settings.ProgramType.create",[
            
         ]);        
     }

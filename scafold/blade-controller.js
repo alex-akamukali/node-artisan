@@ -20,10 +20,15 @@ const BladeController = function(path,modelPath,table=''){
 
     let labelBuilder = Model(path,""); //just to re-use functionality.
 
-    let bladeIndex = BladeIndex(path + "/index",table,labelBuilder.getHumanCase());
+    
 
     let bladeCreate = BladeModal({path: path + "/create",tableName:table,
-    title:labelBuilder.getHumanCase(),id:"modal-create",action:"Add",actionCommit:"Create"});
+    title:labelBuilder.getHumanCase(),id:"modal-create",action:"Add",actionCommit:"Create",routeAction:labelBuilder.getHyphenCase() + ".store"});
+
+    let bladeEdit = BladeModal({path: path + "/edit",tableName:table,
+    title:labelBuilder.getHumanCase(),id:"modal-edit",action:"Edit",actionCommit:"Update",routeAction:labelBuilder.getHyphenCase() + ".update"});
+
+    let bladeIndex = BladeIndex(path + "/index",table,labelBuilder.getHumanCase(),bladeCreate.getViewPath(),bladeEdit.getViewPath(),labelBuilder.getHyphenCase() + ".destroy");
     
     // let svelteCreateModal = SvelteCreateModal(path + "/ModalCreate",table,labelBuilder.getHumanCase());
     // let svelteUpdateModal = SvelteUpdateModal(path + "/ModalUpdate",table,labelBuilder.getHumanCase());
@@ -54,16 +59,8 @@ const BladeController = function(path,modelPath,table=''){
 
         bladeIndex.commit();
         bladeCreate.commit();
-        
-        // svelteEdit.commit();
-        // svelteCreate.commit();
-        // svelteShow.commit();
-
-        // svelteForm.commit();
-
-        // svelteCreateModal.commit();
-        // svelteUpdateModal.commit();
-        
+        bladeEdit.commit();
+                
     }
 
     return Object.seal({

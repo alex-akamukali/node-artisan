@@ -2,7 +2,7 @@ const CodeGen = require("./code-gen");
 const TableFields = require("./table-fields");
 
 
-const BladeModal = function({path,tableName,title,id,action,actionCommit}){
+const BladeModal = function({path,tableName,title,id,action,actionCommit,routeAction}){
    
     let query = TableFields(tableName);
 
@@ -14,7 +14,8 @@ const BladeModal = function({path,tableName,title,id,action,actionCommit}){
         fieldSet: await renderFieldSet(),
         title,
         action,
-        actionCommit
+        actionCommit,
+        routeAction
        },".blade.php");
     }
 

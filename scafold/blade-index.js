@@ -3,7 +3,7 @@ const CodeGen = require("./code-gen");
 const TableFields = require("./table-fields");
 
 
-const BladeIndex = function(path,tableName,title,bladeCreateModal,bladeEditModal){
+const BladeIndex = function(path,tableName,title,bladeCreateViewPath,bladeEditViewPath,routeDestroy){
  
     let code = CodeGen("resources/views/" + path,"templates/blade-index.stub");
     let query = TableFields(tableName);
@@ -12,10 +12,13 @@ const BladeIndex = function(path,tableName,title,bladeCreateModal,bladeEditModal
        code.commit({
         title,
         tableHeader: await renderTableHeaders(),
-        tableRow: await renderTableRows()
+        tableRow: await renderTableRows(),
+        bladeCreateViewPath,
+        bladeEditViewPath,
+        routeDestroy
        },".blade.php");
-       bladeCreateModal.commit();
-       bladeEditModal.commit();
+      //  bladeCreateModal.commit();
+      //  bladeEditModal.commit();
     }
 
     //v2/Settings/Config/Index
