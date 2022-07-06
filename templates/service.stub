@@ -14,7 +14,7 @@ class {name}
 
     function fetch($filters=[]){
         $query = $this->{repoVariable}->query();
-        return $query;
+        return $query->getQuery();
     }
 
     function fetchById($id){

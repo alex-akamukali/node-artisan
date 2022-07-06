@@ -6,10 +6,17 @@ use {modelUse};
 class {name}
 {
 
+    private $_query = null;
+
 
     function query(){
         $query = {modelName}::query();
-        return $query;
+        $this->_query = $query;
+        return $this;
+    }
+
+    function getQuery(){
+       return $this->_query; 
     }
 
     function fetchById($id){
