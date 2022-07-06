@@ -24,7 +24,7 @@
     <div class="box-header with-border">
      
       <div class="box-tools pull-right">
-         <button slot="createButton" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-create">
+         <button slot="createButton" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#{modalId}modal-create">
             <i class="fa fa-plus"></i>
             Add {title}
          </button>
