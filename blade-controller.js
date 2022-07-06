@@ -26,12 +26,12 @@ const BladeController = function(path,modelPath,table=''){
     
 
     let bladeCreate = BladeModal({path: path + "/create",tableName:table,
-    title:labelBuilder.getHumanCase(),id:"modal-create",action:"Add",actionCommit:"Create",routeAction:labelBuilder.getHyphenCase() + ".store"});
+    title:labelBuilder.getHumanCase(),id:labelBuilder.getHyphenCase() + "modal-create",action:"Add",actionCommit:"Create",routeAction:labelBuilder.getHyphenCase() + ".store"});
 
     let bladeEdit = BladeEditModal({path: path + "/edit",tableName:table,
-    title:labelBuilder.getHumanCase(),id:"modal-edit",action:"Edit",actionCommit:"Update",routeAction:labelBuilder.getHyphenCase() + ".update"});
+    title:labelBuilder.getHumanCase(),id:labelBuilder.getHyphenCase() + "modal-edit",action:"Edit",actionCommit:"Update",routeAction:labelBuilder.getHyphenCase() + ".update"});
 
-    let bladeIndex = BladeIndex(path + "/index",table,labelBuilder.getHumanCase(),bladeCreate.getViewPath(),bladeEdit.getViewPath(),labelBuilder.getHyphenCase() + ".destroy");
+    let bladeIndex = BladeIndex(path,table,labelBuilder.getHumanCase(),bladeCreate.getViewPath(),bladeEdit.getViewPath(),labelBuilder.getHyphenCase() + ".destroy");
     
     // let svelteCreateModal = SvelteCreateModal(path + "/ModalCreate",table,labelBuilder.getHumanCase());
     // let svelteUpdateModal = SvelteUpdateModal(path + "/ModalUpdate",table,labelBuilder.getHumanCase());

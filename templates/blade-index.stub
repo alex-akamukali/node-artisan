@@ -53,11 +53,11 @@
                 <tr class="odd">
                    {tableRow}
                   <td>
-                   <a data-toggle="modal" data-target="#modal-edit">
+                   <a data-toggle="modal" data-target="#{modalId}modal-edit{{ $item->id }}">
                       <i class="fa fa-edit text-green"></i>
                    </a>
                     &nbsp;&nbsp;
-                    <form style="display: inline-block;" method="post" action="{{ route('{routeDestroy}',$item->id) }}">
+                    <form onsubmit="confirm('Do You want to proceed with this action?')" style="display: inline-block;" method="post" action="{{ route('{routeDestroy}',$item->id) }}">
                        @csrf
                        @method('DELETE')
                        <button><i class="fa fa-trash text-red"></i></button>

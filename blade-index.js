@@ -5,8 +5,9 @@ const TableFields = require("./table-fields");
 
 const BladeIndex = function(path,tableName,title,bladeCreateViewPath,bladeEditViewPath,routeDestroy){
  
-    let code = CodeGen("resources/views/" + path,"templates/blade-index.stub");
+    let code = CodeGen("resources/views/" + path + "/index","templates/blade-index.stub");
     let query = TableFields(tableName);
+    let labelBuilder = CodeGen(path,"");
 
     async function commit(){
        code.commit({
@@ -15,7 +16,8 @@ const BladeIndex = function(path,tableName,title,bladeCreateViewPath,bladeEditVi
         tableRow: await renderTableRows(),
         bladeCreateViewPath,
         bladeEditViewPath,
-        routeDestroy
+        routeDestroy,
+        modalId:labelBuilder.getHyphenCase()
        },".blade.php");
       //  bladeCreateModal.commit();
       //  bladeEditModal.commit();
